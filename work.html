@@ -18,19 +18,37 @@
     </div>
     <h1 id="header">My Work.</h1>
     <h5>While my expert website might suggest otherwise, I am still beginning my programming journey.</h5>
-    <h6>If you have any interesting projects that I should look into, let me know below!</h6>
+    <h6>If you have any interesting project ideas, list them below!</h6>
     <form>
-        <label for="projectIdea">First name:</label><br>
-        <input type="text" id="id" name="projectIdea"><br>
-        <input type="submit" value="Submit"><br>
-        <input type="text" id="id" name="text2">
+        <input type="text" placeholder="Add new project">
+        <button type="submit">Add</button>
     </form>
+  
+    <ul id="todo-list">
+    </ul>
     
     <script>
-        let inp1 = document.getElementsByName('projectIdea')[0];
-        let inp2 = document.getElementsByName('text2')[0];;
-        inp1.addEventListener('keyup', function(e) {
-            inp2.value = this.value;
+        const form = document.querySelector('form');
+        const input = document.querySelector('input');
+        const ul = document.querySelector('#todo-list');
+
+        form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const task = input.value.trim();
+        if (task) {
+            const li = document.createElement('li');
+            const label = document.createElement('label');
+            const del = document.createElement('button');
+            label.textContent = task;
+            li.appendChild(label);
+            ul.appendChild(li);
+            input.value = '';
+        }
+        });
+
+        ul.addEventListener('click', (e) => {
+            const listItem = e.target;
+            listItem.parentNode.removeChild(listItem);
         });
     </script>
 </body>
