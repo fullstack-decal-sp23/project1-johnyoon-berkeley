@@ -22,12 +22,16 @@
     <form>
         <label for="projectIdea">First name:</label><br>
         <input type="text" id="id" name="projectIdea"><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"><br>
+        <input type="text" id="id" name="text2">
     </form>
     
     <script>
-        inp1 = document.getElementsByName('projectIdea')[0]
-
+        let inp1 = document.getElementsByName('projectIdea')[0];
+        let inp2 = document.getElementsByName('text2')[0];;
+        inp1.addEventListener('keyup', function(e) {
+            inp2.value = this.value;
+        });
     </script>
 </body>
 </html>
